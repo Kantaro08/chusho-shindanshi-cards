@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>診断士 重要用語カード</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>診断士 重要用語カード</h1>
+      <p>1次試験の頻出論点を、講師目線で整理した暗記カード</p>
+    </div>
+    <div class="stats">
+      <span id="cardCount">0 cards</span>
+      <span id="knownCount">0 known</span>
+      <span id="position">0 / 0</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <label>
+        検索
+        <input id="search" type="search" placeholder="需要曲線、NPV、会社法...">
+      </label>
+      <label>
+        科目
+        <select id="subjectFilter">
+          <option value="">すべて</option>
+        </select>
+      </label>
+      <div class="buttons">
+        <button id="prevButton" type="button">前へ</button>
+        <button id="flipButton" type="button">解説</button>
+        <button id="nextButton" type="button">次へ</button>
+      </div>
+      <button id="knownButton" class="wide" type="button">覚えた</button>
+      <button id="shuffleButton" class="wide" type="button">シャッフル</button>
+    </aside>
+
+    <section class="study">
+      <article id="card" class="card">
+        <div class="card-head">
+          <p class="eyebrow" id="subject">SUBJECT</p>
+          <span id="importance" class="importance">A</span>
+        </div>
+        <h2 id="term">データ未生成</h2>
+        <div id="diagram" class="diagram"></div>
+        <p id="hint">先に npm run professional を実行してください。</p>
+        <div id="answer" class="answer"></div>
+        <p id="sourceBadge" class="source-badge"></p>
+      </article>
+
+      <section class="meta">
+        <div>
+          <h3>出現</h3>
+          <p id="count">-</p>
+        </div>
+        <div>
+          <h3>講師メモ</h3>
+          <p id="example">-</p>
+        </div>
+        <div>
+          <h3>参照</h3>
+          <ul id="sources"></ul>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button id="bottomPrev" type="button">前へ</button>
+    <button id="bottomFlip" type="button">解説</button>
+    <button id="bottomNext" type="button">次へ</button>
+  </nav>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
