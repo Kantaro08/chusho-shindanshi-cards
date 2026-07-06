@@ -1,0 +1,2464 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>診断士 重要用語カード</title>
+  <style>
+:root {
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --ink: #111827;
+  --muted: #667085;
+  --line: #d6dde8;
+  --accent: #0f766e;
+  --panel: #ffffff;
+  --warn: #b45309;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: 21px; font-weight: 760; letter-spacing: 0; }
+.topbar p { margin-top: 4px; color: var(--muted); font-size: 13px; }
+
+.stats {
+  display: flex;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.stats span {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fbfcfd;
+  padding: 7px 9px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 282px minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px 22px 88px;
+}
+
+.panel {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+input, select, button {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+input, select { padding: 0 12px; }
+button { cursor: pointer; font-weight: 700; touch-action: manipulation; }
+button:hover { border-color: var(--accent); }
+.wide { width: 100%; }
+.buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+
+.study { display: grid; gap: 14px; }
+
+.card {
+  min-height: 520px;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 14px 36px rgba(22, 34, 51, 0.08);
+}
+
+.card.is-known {
+  border-color: var(--accent);
+  box-shadow: 0 14px 36px rgba(15, 118, 110, 0.14);
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.importance {
+  min-width: 32px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 6px;
+  background: #e8f5f3;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 42px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+#hint, .answer p, #example {
+  color: var(--muted);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+.answer {
+  display: grid;
+  gap: 10px;
+}
+
+.diagram {
+  min-height: 188px;
+  display: grid;
+  align-items: center;
+}
+
+.diagram svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+
+.axis, .line, .arrow {
+  fill: none;
+  stroke: #344054;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow { marker-end: url(#arrow); }
+.accent { stroke: var(--accent); }
+.dashed { stroke-dasharray: 7 7; }
+.dot { fill: var(--accent); }
+.box, .node {
+  fill: #fff;
+  stroke: #98a2b3;
+  stroke-width: 2;
+}
+.accent-fill { fill: #dff4ef; stroke: var(--accent); }
+.bar { fill: #dff4ef; stroke: var(--accent); stroke-width: 2; }
+.negative { fill: #fee4e2; stroke: #d92d20; }
+svg text { fill: #344054; font-size: 14px; font-weight: 700; }
+
+.source-badge {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.meta > div {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+h3 {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+ul {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li, a {
+  color: var(--ink);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.bottom-nav {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  .topbar {
+    display: grid;
+    padding: 14px 16px;
+  }
+
+  h1 { font-size: 19px; }
+  .topbar p { display: none; }
+  .stats { overflow-x: auto; }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px 14px 88px;
+  }
+
+  .panel {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .panel .buttons,
+  .panel .wide {
+    display: none;
+  }
+
+  .card {
+    min-height: calc(100vh - 286px);
+    padding: 20px;
+  }
+
+  h2 { font-size: 32px; }
+  .diagram { min-height: 150px; }
+  #hint, .answer p, #example { font-size: 14px; }
+
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+  }
+}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>診断士 重要用語カード</h1>
+      <p>1次試験の頻出論点を、講師目線で整理した暗記カード</p>
+    </div>
+    <div class="stats">
+      <span id="cardCount">0 cards</span>
+      <span id="knownCount">0 known</span>
+      <span id="position">0 / 0</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <label>
+        検索
+        <input id="search" type="search" placeholder="需要曲線、NPV、会社法...">
+      </label>
+      <label>
+        科目
+        <select id="subjectFilter">
+          <option value="">すべて</option>
+        </select>
+      </label>
+      <div class="buttons">
+        <button id="prevButton" type="button">前へ</button>
+        <button id="flipButton" type="button">解説</button>
+        <button id="nextButton" type="button">次へ</button>
+      </div>
+      <button id="knownButton" class="wide" type="button">覚えた</button>
+      <button id="shuffleButton" class="wide" type="button">シャッフル</button>
+    </aside>
+
+    <section class="study">
+      <article id="card" class="card">
+        <div class="card-head">
+          <p class="eyebrow" id="subject">SUBJECT</p>
+          <span id="importance" class="importance">A</span>
+        </div>
+        <h2 id="term">データ未生成</h2>
+        <div id="diagram" class="diagram"></div>
+        <p id="hint">先に npm run professional を実行してください。</p>
+        <div id="answer" class="answer"></div>
+        <p id="sourceBadge" class="source-badge"></p>
+      </article>
+
+      <section class="meta">
+        <div>
+          <h3>出現</h3>
+          <p id="count">-</p>
+        </div>
+        <div>
+          <h3>講師メモ</h3>
+          <p id="example">-</p>
+        </div>
+        <div>
+          <h3>参照</h3>
+          <ul id="sources"></ul>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button id="bottomPrev" type="button">前へ</button>
+    <button id="bottomFlip" type="button">解説</button>
+    <button id="bottomNext" type="button">次へ</button>
+  </nav>
+
+  <script>window.__CARDS__ = [
+  {
+    "id": "0d490776f0a0",
+    "term": "需要曲線",
+    "front": "需要曲線",
+    "back": "価格と需要量の関係を示す右下がりの曲線。価格が下がるほど需要量が増えるという需要法則を表す。",
+    "point": "価格変化による「曲線上の移動」と、所得・嗜好などによる「曲線そのもののシフト」を必ず区別する。",
+    "example": "需要増加は曲線が右へ、需要減少は左へ動く。",
+    "hint": "価格変化による「曲線上の移動」と、所得・嗜好などによる「曲線そのもののシフト」を必ず区別する。",
+    "diagram": "demand",
+    "subject": "経済学・経済政策",
+    "totalCount": 86,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 86
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "67e9fa1fc15b",
+    "term": "供給曲線",
+    "front": "供給曲線",
+    "back": "価格と供給量の関係を示す右上がりの曲線。価格が上がるほど企業が供給したい量が増える。",
+    "point": "投入価格・技術・税制などが変わると供給曲線そのものがシフトする。",
+    "example": "原材料価格上昇は供給曲線を左へ動かしやすい。",
+    "hint": "投入価格・技術・税制などが変わると供給曲線そのものがシフトする。",
+    "diagram": "supply",
+    "subject": "経済学・経済政策",
+    "totalCount": 58,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 58
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "66405b7381ad",
+    "term": "市場均衡",
+    "front": "市場均衡",
+    "back": "需要量と供給量が一致する価格と数量の組み合わせ。需要曲線と供給曲線の交点で表される。",
+    "point": "超過需要なら価格上昇、超過供給なら価格下落の圧力が働く。",
+    "example": "需要増加なら均衡価格・均衡数量は通常上昇する。",
+    "hint": "超過需要なら価格上昇、超過供給なら価格下落の圧力が働く。",
+    "diagram": "equilibrium",
+    "subject": "経済学・経済政策",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "d02a45f5f84f",
+    "term": "価格弾力性",
+    "front": "価格弾力性",
+    "back": "価格が1%変化したとき、需要量または供給量が何%変化するかを表す指標。",
+    "point": "絶対値が1より大きいと弾力的、1より小さいと非弾力的。売上高の増減判断で頻出。",
+    "example": "需要の価格弾力性が大きい財は、値上げで売上が減りやすい。",
+    "hint": "絶対値が1より大きいと弾力的、1より小さいと非弾力的。売上高の増減判断で頻出。",
+    "diagram": "elasticity",
+    "subject": "経済学・経済政策",
+    "totalCount": 52,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 52
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E5%BC%BE%E5%8A%9B%E6%80%A7_(%E7%B5%8C%E6%B8%88%E5%AD%A6)"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "9fcf56bc7df8",
+    "term": "需要の価格弾力性",
+    "front": "需要の価格弾力性",
+    "back": "価格変化に対する需要量の反応度。通常はマイナスになるため、試験では絶対値で扱うことが多い。",
+    "point": "代替財が多い、支出割合が大きい、長期であるほど弾力的になりやすい。",
+    "example": "嗜好品は生活必需品より弾力的になりやすい。",
+    "hint": "代替財が多い、支出割合が大きい、長期であるほど弾力的になりやすい。",
+    "diagram": "elasticity",
+    "subject": "経済学・経済政策",
+    "totalCount": 19,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 19
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E5%BC%BE%E5%8A%9B%E6%80%A7_(%E7%B5%8C%E6%B8%88%E5%AD%A6)"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "e20ddb36138c",
+    "term": "無差別曲線",
+    "front": "無差別曲線",
+    "back": "消費者に同じ満足度を与える2財の組み合わせを結んだ曲線。",
+    "point": "通常は右下がりで原点に対して凸。予算制約線との接点で効用最大化を考える。",
+    "example": "接点では限界代替率と価格比が一致する。",
+    "hint": "通常は右下がりで原点に対して凸。予算制約線との接点で効用最大化を考える。",
+    "diagram": "indifference",
+    "subject": "経済学・経済政策",
+    "totalCount": 11,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 11
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "ac017a2f5bf9",
+    "term": "予算制約線",
+    "front": "予算制約線",
+    "back": "所得と財価格の制約下で購入可能な2財の組み合わせを示す直線。",
+    "point": "所得増加は外側への平行移動、価格変化は傾きの変化。",
+    "example": "X財価格が下がるとX軸切片が外側へ動く。",
+    "hint": "所得増加は外側への平行移動、価格変化は傾きの変化。",
+    "diagram": "budget",
+    "subject": "経済学・経済政策",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "80bac67b0417",
+    "term": "限界費用",
+    "front": "限界費用",
+    "back": "生産量を1単位増やしたときに追加で発生する費用。",
+    "point": "完全競争企業は価格=限界費用となる生産量を選ぶ、という形で出やすい。",
+    "example": "限界費用が平均費用を下回ると平均費用は低下する。",
+    "hint": "完全競争企業は価格=限界費用となる生産量を選ぶ、という形で出やすい。",
+    "diagram": "cost",
+    "subject": "経済学・経済政策",
+    "totalCount": 68,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 68
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "4c42e6867901",
+    "term": "平均費用",
+    "front": "平均費用",
+    "back": "総費用を生産量で割ったもの。平均固定費用と平均可変費用の合計。",
+    "point": "限界費用曲線が平均費用曲線を下から上に横切る点が平均費用の最小点。",
+    "example": "規模の経済が働く範囲では平均費用が低下する。",
+    "hint": "限界費用曲線が平均費用曲線を下から上に横切る点が平均費用の最小点。",
+    "diagram": "cost",
+    "subject": "経済学・経済政策",
+    "totalCount": 33,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 33
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "d56a26a1f985",
+    "term": "短期費用曲線",
+    "front": "短期費用曲線",
+    "back": "固定投入が存在する短期における費用と生産量の関係を示す曲線群。",
+    "point": "平均費用・平均可変費用・限界費用の位置関係を図で覚える。",
+    "example": "操業停止点は価格が平均可変費用の最小値を下回る水準。",
+    "hint": "平均費用・平均可変費用・限界費用の位置関係を図で覚える。",
+    "diagram": "cost",
+    "subject": "経済学・経済政策",
+    "totalCount": 2,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 2
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "5dfb2ab4b3a2",
+    "term": "IS曲線",
+    "front": "IS曲線",
+    "back": "財市場が均衡する利子率と国民所得の組み合わせを表す右下がりの曲線。",
+    "point": "投資が利子率に反応するほどIS曲線は緩やかになりやすい。",
+    "example": "政府支出増加はIS曲線を右へシフトさせる。",
+    "hint": "投資が利子率に反応するほどIS曲線は緩やかになりやすい。",
+    "diagram": "is-lm",
+    "subject": "経済学・経済政策",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "0bbbfa557d89",
+    "term": "LM曲線",
+    "front": "LM曲線",
+    "back": "貨幣市場が均衡する利子率と国民所得の組み合わせを表す右上がりの曲線。",
+    "point": "貨幣供給量の増加はLM曲線を右へシフトさせる。",
+    "example": "所得増加で貨幣需要が増えると、均衡利子率は上がる。",
+    "hint": "貨幣供給量の増加はLM曲線を右へシフトさせる。",
+    "diagram": "is-lm",
+    "subject": "経済学・経済政策",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "ee92f25a5a39",
+    "term": "フィッシャー方程式",
+    "front": "フィッシャー方程式",
+    "back": "名目利子率、実質利子率、期待インフレ率の関係を表す式。概ね名目利子率=実質利子率+期待インフレ率。",
+    "point": "名目と実質の区別を問う問題で頻出。",
+    "example": "期待インフレ率が上がると、実質利子率一定なら名目利子率は上がる。",
+    "hint": "名目と実質の区別を問う問題で頻出。",
+    "diagram": "formula",
+    "subject": "経済学・経済政策",
+    "totalCount": 1,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 1
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "a2de02c339de",
+    "term": "ラスパイレス指数",
+    "front": "ラスパイレス指数",
+    "back": "基準年の数量を重みとして価格変化を測る物価指数。",
+    "point": "パーシェ指数との違いは重み。ラスパイレスは基準年数量、パーシェは比較年数量。",
+    "example": "消費者物価指数の理解に関係する。",
+    "hint": "パーシェ指数との違いは重み。ラスパイレスは基準年数量、パーシェは比較年数量。",
+    "diagram": "index",
+    "subject": "経済学・経済政策",
+    "totalCount": 18,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 18
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "e584719ed4d7",
+    "term": "ローレンツ曲線",
+    "front": "ローレンツ曲線",
+    "back": "所得や資産の分配の偏りを示す曲線。完全平等線から離れるほど不平等が大きい。",
+    "point": "ジニ係数とセットで覚える。",
+    "example": "45度線に近いほど平等。",
+    "hint": "ジニ係数とセットで覚える。",
+    "diagram": "lorenz",
+    "subject": "経済学・経済政策",
+    "totalCount": 3,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 3
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "64fe4d7313b2",
+    "term": "ジニ係数",
+    "front": "ジニ係数",
+    "back": "分配の不平等度を0から1の範囲で表す指標。1に近いほど不平等。",
+    "point": "ローレンツ曲線と完全平等線の間の面積でイメージする。",
+    "example": "所得分布や地域格差の論点で出る。",
+    "hint": "ローレンツ曲線と完全平等線の間の面積でイメージする。",
+    "diagram": "lorenz",
+    "subject": "経済学・経済政策",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "経済学・経済政策",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "e1e2f6149197",
+    "term": "正味現在価値",
+    "front": "正味現在価値",
+    "back": "将来キャッシュフローを資本コストで割り引いた現在価値から初期投資額を差し引いた金額。",
+    "point": "NPVが正なら企業価値を増やす投資案として採用候補。",
+    "example": "NPV法は金額で投資価値を判断できる。",
+    "hint": "NPVが正なら企業価値を増やす投資案として採用候補。",
+    "diagram": "npv",
+    "subject": "財務・会計",
+    "totalCount": 24,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 24
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "09025d76945b",
+    "term": "NPV",
+    "front": "NPV",
+    "back": "Net Present Value。正味現在価値のこと。投資案が生み出す価値を現在価値ベースで測る。",
+    "point": "IRRよりも企業価値最大化と整合しやすい。",
+    "example": "排他的投資案ではNPVが大きい案を選ぶのが原則。",
+    "hint": "IRRよりも企業価値最大化と整合しやすい。",
+    "diagram": "npv",
+    "subject": "財務・会計",
+    "totalCount": 20,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 20
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "94499b1ab224",
+    "term": "IRR",
+    "front": "IRR",
+    "back": "内部収益率。NPVがゼロになる割引率。投資案の利回りを示す。",
+    "point": "資本コストを上回るIRRなら採用候補。ただし複数解や規模の違いに注意。",
+    "example": "初期投資が小さい案ほどIRRが高く見える場合がある。",
+    "hint": "資本コストを上回るIRRなら採用候補。ただし複数解や規模の違いに注意。",
+    "diagram": "irr",
+    "subject": "財務・会計",
+    "totalCount": 16,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 16
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E5%86%85%E9%83%A8%E5%8F%8E%E7%9B%8A%E7%8E%87"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "7a036f1e978a",
+    "term": "加重平均資本コスト",
+    "front": "加重平均資本コスト",
+    "back": "負債コストと株主資本コストを資本構成で加重平均した企業全体の資本コスト。WACCともいう。",
+    "point": "法人税を考慮する場合、負債コストには節税効果を反映する。",
+    "example": "企業価値評価や投資判断の割引率として使う。",
+    "hint": "法人税を考慮する場合、負債コストには節税効果を反映する。",
+    "diagram": "wacc",
+    "subject": "財務・会計",
+    "totalCount": 9,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 9
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E8%B3%87%E6%9C%AC%E8%B3%87%E7%94%A3%E8%A9%95%E4%BE%A1%E3%83%A2%E3%83%87%E3%83%AB"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "aa92e4353f87",
+    "term": "CAPM",
+    "front": "CAPM",
+    "back": "資本資産評価モデル。リスクフリーレート、β、市場リスクプレミアムから株主資本コストを求める。",
+    "point": "βは市場全体に対する感応度。βが高いほど要求収益率は高い。",
+    "example": "株主資本コスト=リスクフリーレート+β×市場リスクプレミアム。",
+    "hint": "βは市場全体に対する感応度。βが高いほど要求収益率は高い。",
+    "diagram": "capm",
+    "subject": "財務・会計",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E8%B3%87%E6%9C%AC%E8%B3%87%E7%94%A3%E8%A9%95%E4%BE%A1%E3%83%A2%E3%83%87%E3%83%AB"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "83a2ab43292f",
+    "term": "効率的フロンティア",
+    "front": "効率的フロンティア",
+    "back": "同じリスクなら期待収益率が最大、同じ期待収益率ならリスクが最小となるポートフォリオ集合。",
+    "point": "分散投資によるリスク低減とセットで理解する。",
+    "example": "合理的投資家は効率的フロンティア上の組み合わせを選ぶ。",
+    "hint": "分散投資によるリスク低減とセットで理解する。",
+    "diagram": "frontier",
+    "subject": "財務・会計",
+    "totalCount": 7,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 7
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E8%B3%87%E6%9C%AC%E8%B3%87%E7%94%A3%E8%A9%95%E4%BE%A1%E3%83%A2%E3%83%87%E3%83%AB"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "1b3e6cbc2179",
+    "term": "損益分岐点",
+    "front": "損益分岐点",
+    "back": "売上高と総費用が一致し、利益がゼロになる売上高または販売数量。",
+    "point": "固定費、変動費率、限界利益率の関係を押さえる。",
+    "example": "損益分岐点売上高=固定費÷限界利益率。",
+    "hint": "固定費、変動費率、限界利益率の関係を押さえる。",
+    "diagram": "break-even",
+    "subject": "財務・会計",
+    "totalCount": 23,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 23
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "c8b2e7de6bb3",
+    "term": "損益分岐点比率",
+    "front": "損益分岐点比率",
+    "back": "実際の売上高に対する損益分岐点売上高の割合。低いほど安全性が高い。",
+    "point": "安全余裕率=1-損益分岐点比率。",
+    "example": "固定費が増えると損益分岐点比率は高まりやすい。",
+    "hint": "安全余裕率=1-損益分岐点比率。",
+    "diagram": "break-even",
+    "subject": "財務・会計",
+    "totalCount": 6,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 6
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "380b394da915",
+    "term": "自己資本比率",
+    "front": "自己資本比率",
+    "back": "総資本に占める自己資本の割合。財務安全性を示す代表指標。",
+    "point": "高いほど返済義務のない資本が厚い。ただし資本効率とのバランスも見る。",
+    "example": "自己資本比率=自己資本÷総資本。",
+    "hint": "高いほど返済義務のない資本が厚い。ただし資本効率とのバランスも見る。",
+    "diagram": "ratio",
+    "subject": "財務・会計",
+    "totalCount": 22,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 22
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "ec4fefbac60c",
+    "term": "流動比率",
+    "front": "流動比率",
+    "back": "流動負債に対する流動資産の割合。短期支払能力を表す。",
+    "point": "一般には高いほど短期安全性は高いが、過剰在庫などの質も見る。",
+    "example": "流動比率=流動資産÷流動負債。",
+    "hint": "一般には高いほど短期安全性は高いが、過剰在庫などの質も見る。",
+    "diagram": "ratio",
+    "subject": "財務・会計",
+    "totalCount": 11,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 11
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "268aab575cff",
+    "term": "EBITDA",
+    "front": "EBITDA",
+    "back": "利払い前・税引前・減価償却前利益。償却方針の影響を除いた収益力の目安。",
+    "point": "企業価値評価ではEV/EBITDA倍率とセットで出る。",
+    "example": "設備投資が大きい業種では営業利益との差に注意。",
+    "hint": "企業価値評価ではEV/EBITDA倍率とセットで出る。",
+    "diagram": "formula",
+    "subject": "財務・会計",
+    "totalCount": 20,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 20
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "3a2ffa8ec2d9",
+    "term": "標準原価",
+    "front": "標準原価",
+    "back": "標準的な材料・労務・操業条件を前提に事前設定する原価。",
+    "point": "原価差異分析で実際原価との差を管理する。",
+    "example": "価格差異、数量差異、賃率差異、作業時間差異などに分解する。",
+    "hint": "原価差異分析で実際原価との差を管理する。",
+    "diagram": "table",
+    "subject": "財務・会計",
+    "totalCount": 3,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 3
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "bd3d107e0667",
+    "term": "直接原価計算",
+    "front": "直接原価計算",
+    "back": "固定製造原価を期間費用として扱い、変動費と固定費に分けて利益管理する方法。",
+    "point": "CVP分析や短期意思決定と相性がよい。",
+    "example": "全部原価計算との営業利益差は在庫増減で生じる。",
+    "hint": "CVP分析や短期意思決定と相性がよい。",
+    "diagram": "table",
+    "subject": "財務・会計",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "財務・会計",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%91%B3%E7%8F%BE%E5%9C%A8%E4%BE%A1%E5%80%A4"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "2df2dcc553a8",
+    "term": "SWOT分析",
+    "front": "SWOT分析",
+    "back": "強み・弱み・機会・脅威の4区分で内部環境と外部環境を整理するフレームワーク。",
+    "point": "列挙で終わらせず、クロスSWOTで戦略案につなげる。",
+    "example": "強み×機会は積極戦略、弱み×脅威は防衛・撤退戦略。",
+    "hint": "列挙で終わらせず、クロスSWOTで戦略案につなげる。",
+    "diagram": "swot",
+    "subject": "企業経営理論",
+    "totalCount": 0,
+    "importance": "A",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SWOT%E5%88%86%E6%9E%90"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "dc8d5e7a4af2",
+    "term": "5フォース分析",
+    "front": "5フォース分析",
+    "back": "業界の収益性を、競争業者・新規参入・代替品・買い手・売り手の5つの力から分析する枠組み。",
+    "point": "業界構造が利益率を左右するというポーターの考え方。",
+    "example": "買い手の交渉力が強いほど価格引下げ圧力が強くなる。",
+    "hint": "業界構造が利益率を左右するというポーターの考え方。",
+    "diagram": "five-forces",
+    "subject": "企業経営理論",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%96%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9%E5%88%86%E6%9E%90"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "430c9f4ad424",
+    "term": "VRIO",
+    "front": "VRIO",
+    "back": "経営資源を価値・希少性・模倣困難性・組織の4観点で評価するフレームワーク。",
+    "point": "持続的競争優位には4条件がそろう必要がある。",
+    "example": "資源が価値あるだけでは一時的優位にとどまりやすい。",
+    "hint": "持続的競争優位には4条件がそろう必要がある。",
+    "diagram": "vrio",
+    "subject": "企業経営理論",
+    "totalCount": 8,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 8
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/VRIO"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "ce6d9ea931cd",
+    "term": "アンゾフの成長マトリクス",
+    "front": "アンゾフの成長マトリクス",
+    "back": "市場と製品の既存・新規の組み合わせで、成長戦略を4分類する枠組み。",
+    "point": "市場浸透・新製品開発・新市場開拓・多角化を区別する。",
+    "example": "新製品×新市場は多角化でリスクが大きい。",
+    "hint": "市場浸透・新製品開発・新市場開拓・多角化を区別する。",
+    "diagram": "matrix",
+    "subject": "企業経営理論",
+    "totalCount": 1,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 1
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SWOT%E5%88%86%E6%9E%90"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "c69fa2f474b2",
+    "term": "PPM",
+    "front": "PPM",
+    "back": "市場成長率と相対的市場シェアで事業を4象限に分類し、資源配分を考える手法。",
+    "point": "花形・金のなる木・問題児・負け犬を図で覚える。",
+    "example": "金のなる木で稼いだ資金を花形や問題児へ投資する。",
+    "hint": "花形・金のなる木・問題児・負け犬を図で覚える。",
+    "diagram": "ppm",
+    "subject": "企業経営理論",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SWOT%E5%88%86%E6%9E%90"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "b5b372b7986b",
+    "term": "コア・コンピタンス",
+    "front": "コア・コンピタンス",
+    "back": "競争優位の源泉となる中核的能力。複数事業へ展開可能で模倣困難な能力を指す。",
+    "point": "単なる得意分野ではなく、顧客価値と競争優位に結びつく能力。",
+    "example": "ホンダのエンジン技術のように複数製品へ展開される。",
+    "hint": "単なる得意分野ではなく、顧客価値と競争優位に結びつく能力。",
+    "diagram": "none",
+    "subject": "企業経営理論",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/VRIO"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "0eabd9dbd863",
+    "term": "MBO",
+    "front": "MBO",
+    "back": "Management Buyout。経営陣が自社株式や事業を買い取って独立・非公開化する手法。",
+    "point": "目標管理制度のMBOと略語が同じなので文脈で判別する。",
+    "example": "事業承継や上場廃止の文脈で出る。",
+    "hint": "目標管理制度のMBOと略語が同じなので文脈で判別する。",
+    "diagram": "none",
+    "subject": "企業経営理論",
+    "totalCount": 12,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 12
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=417AC0000000086"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "a2a1b4ca576c",
+    "term": "CVC",
+    "front": "CVC",
+    "back": "Corporate Venture Capital。事業会社が戦略目的でベンチャー企業へ投資する仕組み。",
+    "point": "財務リターンだけでなく、新技術・新市場探索が目的。",
+    "example": "オープンイノベーションとセットで理解する。",
+    "hint": "財務リターンだけでなく、新技術・新市場探索が目的。",
+    "diagram": "none",
+    "subject": "企業経営理論",
+    "totalCount": 2,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 2
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SWOT%E5%88%86%E6%9E%90"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "616b1be70212",
+    "term": "ジョイントベンチャー",
+    "front": "ジョイントベンチャー",
+    "back": "複数企業が共同で出資・運営する事業体または共同事業。",
+    "point": "海外進出、技術補完、リスク分担の文脈で出やすい。",
+    "example": "現地企業との合弁は市場知識を得やすいが意思決定は複雑になる。",
+    "hint": "海外進出、技術補完、リスク分担の文脈で出やすい。",
+    "diagram": "none",
+    "subject": "企業経営理論",
+    "totalCount": 3,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "企業経営理論",
+        "count": 3
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SWOT%E5%88%86%E6%9E%90"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "eb5d2f4a5803",
+    "term": "JIT",
+    "front": "JIT",
+    "back": "必要なものを、必要なときに、必要な量だけ生産・調達する考え方。",
+    "point": "在庫削減だけでなく、問題を顕在化させ改善につなげる思想。",
+    "example": "かんばん方式とセットで問われやすい。",
+    "hint": "在庫削減だけでなく、問題を顕在化させ改善につなげる思想。",
+    "diagram": "flow",
+    "subject": "運営管理",
+    "totalCount": 4,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 4
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "80c9e43d4f58",
+    "term": "かんばん方式",
+    "front": "かんばん方式",
+    "back": "後工程が必要な部品を必要な量だけ前工程から引き取るための情報伝達方式。",
+    "point": "プル型管理の代表。前工程が勝手に作りすぎないようにする。",
+    "example": "引取かんばん・生産指示かんばんを区別する。",
+    "hint": "プル型管理の代表。前工程が勝手に作りすぎないようにする。",
+    "diagram": "flow",
+    "subject": "運営管理",
+    "totalCount": 10,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 10
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "d3ad33efc2fb",
+    "term": "定量発注方式",
+    "front": "定量発注方式",
+    "back": "在庫が発注点まで下がったとき、あらかじめ決めた一定量を発注する方式。",
+    "point": "需要が比較的安定した品目に向く。発注量は一定、発注間隔は変動。",
+    "example": "発注点=調達期間中の需要量+安全在庫。",
+    "hint": "需要が比較的安定した品目に向く。発注量は一定、発注間隔は変動。",
+    "diagram": "inventory",
+    "subject": "運営管理",
+    "totalCount": 13,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 13
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "a75ac775e1dd",
+    "term": "定期発注方式",
+    "front": "定期発注方式",
+    "back": "一定の発注間隔ごとに、必要量を計算して発注する方式。",
+    "point": "発注間隔は一定、発注量は変動。高価品や重要品に向きやすい。",
+    "example": "発注量=目標在庫量-現在在庫量-発注残。",
+    "hint": "発注間隔は一定、発注量は変動。高価品や重要品に向きやすい。",
+    "diagram": "inventory",
+    "subject": "運営管理",
+    "totalCount": 12,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 12
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "5c07beff9bfd",
+    "term": "EOQ",
+    "front": "EOQ",
+    "back": "Economic Order Quantity。発注費用と在庫維持費用の合計を最小にする発注量。",
+    "point": "需要量・発注費・在庫維持費率の関係を式で押さえる。",
+    "example": "発注費が高いほどEOQは大きくなりやすい。",
+    "hint": "需要量・発注費・在庫維持費率の関係を式で押さえる。",
+    "diagram": "inventory",
+    "subject": "運営管理",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "23e1cac0fe51",
+    "term": "PERT",
+    "front": "PERT",
+    "back": "プロジェクト作業の順序関係と所要時間をネットワークで表す管理手法。",
+    "point": "クリティカルパスはプロジェクト全体の最短完了時間を決める経路。",
+    "example": "余裕時間がゼロの作業がクリティカルパス上にある。",
+    "hint": "クリティカルパスはプロジェクト全体の最短完了時間を決める経路。",
+    "diagram": "pert",
+    "subject": "運営管理",
+    "totalCount": 14,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 14
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "4ada52297817",
+    "term": "工程能力指数",
+    "front": "工程能力指数",
+    "back": "工程が規格内に安定して製品を作れる能力を示す指数。CpやCpkで表す。",
+    "point": "ばらつきが小さいほどCpは大きくなる。中心ずれはCpkで見る。",
+    "example": "Cp=規格幅÷6σ。",
+    "hint": "ばらつきが小さいほどCpは大きくなる。中心ずれはCpkで見る。",
+    "diagram": "normal",
+    "subject": "運営管理",
+    "totalCount": 5,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 5
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "4d62c20f6feb",
+    "term": "コンカレントエンジニアリング",
+    "front": "コンカレントエンジニアリング",
+    "back": "設計・生産・購買などを同時並行で進め、開発期間短縮と品質向上を図る考え方。",
+    "point": "部門横断・早期問題発見・開発リードタイム短縮が狙い。",
+    "example": "後工程の知見を設計段階へ前倒しで反映する。",
+    "hint": "部門横断・早期問題発見・開発リードタイム短縮が狙い。",
+    "diagram": "flow",
+    "subject": "運営管理",
+    "totalCount": 4,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 4
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "ab04b1505e1b",
+    "term": "CAE",
+    "front": "CAE",
+    "back": "Computer Aided Engineering。コンピュータを用いた解析・シミュレーションによる設計支援。",
+    "point": "CAD/CAM/CAEの違いを押さえる。CAEは解析・評価寄り。",
+    "example": "強度解析や熱解析などで試作回数を減らす。",
+    "hint": "CAD/CAM/CAEの違いを押さえる。CAEは解析・評価寄り。",
+    "diagram": "none",
+    "subject": "運営管理",
+    "totalCount": 12,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 12
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "e8382524c550",
+    "term": "APS",
+    "front": "APS",
+    "back": "Advanced Planning and Scheduling。制約条件を考慮して高度な生産計画・スケジューリングを行う仕組み。",
+    "point": "ERPやMESとの役割分担で問われやすい。",
+    "example": "納期・設備能力・材料制約を考慮して計画を作る。",
+    "hint": "ERPやMESとの役割分担で問われやすい。",
+    "diagram": "flow",
+    "subject": "運営管理",
+    "totalCount": 10,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "運営管理",
+        "count": 10
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E9%9C%80%E8%A6%81%E3%81%A8%E4%BE%9B%E7%B5%A6"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "6ab65864cb25",
+    "term": "ERP",
+    "front": "ERP",
+    "back": "Enterprise Resource Planning。企業資源を統合的に管理する基幹業務システム。",
+    "point": "販売・購買・生産・会計などのデータを統合する点が重要。",
+    "example": "部門最適ではなく全社最適を目指す。",
+    "hint": "販売・購買・生産・会計などのデータを統合する点が重要。",
+    "diagram": "system",
+    "subject": "経営情報システム",
+    "totalCount": 16,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営情報システム",
+        "count": 16
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SQL"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "2064cb643caa",
+    "term": "SQL",
+    "front": "SQL",
+    "back": "リレーショナルデータベースを操作するための言語。検索・追加・更新・削除を行う。",
+    "point": "SELECT、FROM、WHERE、GROUP BY、ORDER BYの役割を押さえる。",
+    "example": "売上明細から商品別売上を集計する問題で出やすい。",
+    "hint": "SELECT、FROM、WHERE、GROUP BY、ORDER BYの役割を押さえる。",
+    "diagram": "sql",
+    "subject": "経営情報システム",
+    "totalCount": 42,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営情報システム",
+        "count": 42
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SQL"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "07bf1fabe751",
+    "term": "正規化",
+    "front": "正規化",
+    "back": "データの重複や更新異常を減らすために、表を適切に分割する設計手法。",
+    "point": "第1正規形、第2正規形、第3正規形の考え方を理解する。",
+    "example": "商品名を受注明細に何度も持たせず、商品表に分ける。",
+    "hint": "第1正規形、第2正規形、第3正規形の考え方を理解する。",
+    "diagram": "normalization",
+    "subject": "経営情報システム",
+    "totalCount": 5,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営情報システム",
+        "count": 5
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E8%A6%8F%E5%8C%96_(%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9)"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "68caf4eb8a17",
+    "term": "公開鍵暗号方式",
+    "front": "公開鍵暗号方式",
+    "back": "公開鍵と秘密鍵のペアを使う暗号方式。暗号化・電子署名で使われる。",
+    "point": "機密性は受信者の公開鍵で暗号化、真正性は送信者の秘密鍵で署名。",
+    "example": "共通鍵暗号方式との違いを押さえる。",
+    "hint": "機密性は受信者の公開鍵で暗号化、真正性は送信者の秘密鍵で署名。",
+    "diagram": "security",
+    "subject": "経営情報システム",
+    "totalCount": 2,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営情報システム",
+        "count": 2
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SQL"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "85983972d9fc",
+    "term": "ハッシュ関数",
+    "front": "ハッシュ関数",
+    "back": "任意長のデータから固定長の値を生成する関数。改ざん検知やパスワード管理で使う。",
+    "point": "一方向性、衝突困難性が重要。暗号化とは違い復号しない。",
+    "example": "ファイルのハッシュ値を比較して改ざんを検知する。",
+    "hint": "一方向性、衝突困難性が重要。暗号化とは違い復号しない。",
+    "diagram": "security",
+    "subject": "経営情報システム",
+    "totalCount": 2,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営情報システム",
+        "count": 2
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SQL"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "11118ea9a37b",
+    "term": "機械学習",
+    "front": "機械学習",
+    "back": "データから規則性を学習し、分類・予測・推薦などを行う技術。",
+    "point": "教師あり学習・教師なし学習・強化学習を区別する。",
+    "example": "需要予測や異常検知に使われる。",
+    "hint": "教師あり学習・教師なし学習・強化学習を区別する。",
+    "diagram": "none",
+    "subject": "経営情報システム",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営情報システム",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "ja.wikipedia.org",
+        "url": "https://ja.wikipedia.org/wiki/SQL"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "4db40458f6f4",
+    "term": "個人情報保護法",
+    "front": "個人情報保護法",
+    "back": "個人情報の適正な取扱いを定める法律。取得、利用、第三者提供、安全管理が論点。",
+    "point": "個人情報、個人データ、保有個人データの違いに注意。",
+    "example": "顧客リストの外部提供では本人同意や例外を確認する。",
+    "hint": "個人情報、個人データ、保有個人データの違いに注意。",
+    "diagram": "law",
+    "subject": "経営法務",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=415AC0000000057"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "3b7dba811182",
+    "term": "特許権",
+    "front": "特許権",
+    "back": "発明を独占的に実施できる産業財産権。技術的思想の創作のうち高度なものを保護する。",
+    "point": "出願、審査、登録、存続期間、職務発明が頻出。",
+    "example": "新規性・進歩性を満たさないと登録されない。",
+    "hint": "出願、審査、登録、存続期間、職務発明が頻出。",
+    "diagram": "ip",
+    "subject": "経営法務",
+    "totalCount": 157,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 157
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.jpo.go.jp",
+        "url": "https://www.jpo.go.jp/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "d62699fd71c7",
+    "term": "実用新案権",
+    "front": "実用新案権",
+    "back": "物品の形状・構造・組合せに関する考案を保護する権利。",
+    "point": "特許より小発明寄り。無審査登録制度と技術評価書が論点。",
+    "example": "方法の発明は実用新案の対象ではない。",
+    "hint": "特許より小発明寄り。無審査登録制度と技術評価書が論点。",
+    "diagram": "ip",
+    "subject": "経営法務",
+    "totalCount": 10,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 10
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.jpo.go.jp",
+        "url": "https://www.jpo.go.jp/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "73f4ad062559",
+    "term": "意匠権",
+    "front": "意匠権",
+    "back": "物品等のデザインを保護する権利。形状・模様・色彩などが対象。",
+    "point": "関連意匠、秘密意匠、部分意匠などが問われる。",
+    "example": "製品外観の模倣対策に使う。",
+    "hint": "関連意匠、秘密意匠、部分意匠などが問われる。",
+    "diagram": "ip",
+    "subject": "経営法務",
+    "totalCount": 26,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 26
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.jpo.go.jp",
+        "url": "https://www.jpo.go.jp/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "8fac777f20f4",
+    "term": "商標権",
+    "front": "商標権",
+    "back": "商品・サービスの識別標識を保護する権利。ブランド名やロゴなどが対象。",
+    "point": "指定商品・指定役務との関係で権利範囲が決まる。",
+    "example": "同じ名称でも分野が違えば登録可能な場合がある。",
+    "hint": "指定商品・指定役務との関係で権利範囲が決まる。",
+    "diagram": "ip",
+    "subject": "経営法務",
+    "totalCount": 29,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 29
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.jpo.go.jp",
+        "url": "https://www.jpo.go.jp/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "592e06ccaa82",
+    "term": "著作権",
+    "front": "著作権",
+    "back": "思想または感情を創作的に表現した著作物を保護する権利。",
+    "point": "登録不要で発生する点、著作者人格権と著作財産権の違いが重要。",
+    "example": "プログラム、文章、画像、音楽などが対象になり得る。",
+    "hint": "登録不要で発生する点、著作者人格権と著作財産権の違いが重要。",
+    "diagram": "ip",
+    "subject": "経営法務",
+    "totalCount": 45,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 45
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.jpo.go.jp",
+        "url": "https://www.jpo.go.jp/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "30bd861c9f2e",
+    "term": "会社法",
+    "front": "会社法",
+    "back": "会社の設立、機関、株式、組織再編、計算などを定める基本法。",
+    "point": "株主総会、取締役会、公開会社、種類株式が頻出。",
+    "example": "株式会社の機関設計は会社規模と公開会社かどうかで変わる。",
+    "hint": "株主総会、取締役会、公開会社、種類株式が頻出。",
+    "diagram": "law",
+    "subject": "経営法務",
+    "totalCount": 46,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 46
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=417AC0000000086"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "4e61da68fa48",
+    "term": "株式買取請求権",
+    "front": "株式買取請求権",
+    "back": "一定の組織再編等に反対する株主が、会社に公正な価格で株式を買い取るよう請求できる権利。",
+    "point": "反対株主の保護制度として理解する。",
+    "example": "合併や会社分割の場面で出やすい。",
+    "hint": "反対株主の保護制度として理解する。",
+    "diagram": "law",
+    "subject": "経営法務",
+    "totalCount": 4,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 4
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=417AC0000000086"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "62408eb1a2ae",
+    "term": "新株予約権",
+    "front": "新株予約権",
+    "back": "一定条件で会社の株式を取得できる権利。資金調達やインセンティブに使われる。",
+    "point": "ストックオプションとの関係で問われやすい。",
+    "example": "行使価格、行使期間、希薄化を押さえる。",
+    "hint": "ストックオプションとの関係で問われやすい。",
+    "diagram": "law",
+    "subject": "経営法務",
+    "totalCount": 5,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 5
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=417AC0000000086"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "0312be00bad7",
+    "term": "独占禁止法",
+    "front": "独占禁止法",
+    "back": "私的独占、不当な取引制限、不公正な取引方法などを規制し、公正な競争を守る法律。",
+    "point": "カルテル、入札談合、優越的地位の濫用が頻出。",
+    "example": "課徴金減免制度もセットで覚える。",
+    "hint": "カルテル、入札談合、優越的地位の濫用が頻出。",
+    "diagram": "law",
+    "subject": "経営法務",
+    "totalCount": 0,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "経営法務",
+        "count": 0
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=322AC0000000054"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "bf7bc9e0318e",
+    "term": "中小企業基本法",
+    "front": "中小企業基本法",
+    "back": "中小企業政策の基本理念と施策の方向を定める法律。中小企業者の範囲も重要。",
+    "point": "業種別の資本金・従業員基準を暗記するだけでなく、政策理念も押さえる。",
+    "example": "製造業は資本金3億円以下または従業員300人以下が基準。",
+    "hint": "業種別の資本金・従業員基準を暗記するだけでなく、政策理念も押さえる。",
+    "diagram": "law",
+    "subject": "中小企業経営・政策",
+    "totalCount": 101,
+    "importance": "B",
+    "topSubjects": [
+      {
+        "name": "中小企業経営・政策",
+        "count": 101
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=338AC0000000154"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "f06b230fb480",
+    "term": "小規模企業共済制度",
+    "front": "小規模企業共済制度",
+    "back": "小規模企業の経営者や役員、個人事業主の退職金準備を支援する共済制度。",
+    "point": "経営者の退職金制度という位置づけ。掛金の所得控除も論点。",
+    "example": "廃業や退任時に共済金を受け取る。",
+    "hint": "経営者の退職金制度という位置づけ。掛金の所得控除も論点。",
+    "diagram": "policy",
+    "subject": "中小企業経営・政策",
+    "totalCount": 5,
+    "importance": "C",
+    "topSubjects": [
+      {
+        "name": "中小企業経営・政策",
+        "count": 5
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.smrj.go.jp",
+        "url": "https://www.smrj.go.jp/kyosai/skyosai/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "3db6294a8794",
+    "term": "中小企業倒産防止共済制度",
+    "front": "中小企業倒産防止共済制度",
+    "back": "取引先の倒産による連鎖倒産を防ぐための共済制度。経営セーフティ共済とも呼ばれる。",
+    "point": "取引先倒産時に掛金総額に応じた貸付を受けられる。",
+    "example": "売掛金回収不能による資金繰り悪化に備える。",
+    "hint": "取引先倒産時に掛金総額に応じた貸付を受けられる。",
+    "diagram": "policy",
+    "subject": "中小企業経営・政策",
+    "totalCount": 3,
+    "importance": "C",
+    "topSubjects": [
+      {
+        "name": "中小企業経営・政策",
+        "count": 3
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "www.smrj.go.jp",
+        "url": "https://www.smrj.go.jp/kyosai/tkyosai/"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "cebbfa125815",
+    "term": "セーフティネット保証制度",
+    "front": "セーフティネット保証制度",
+    "back": "取引先倒産、業況悪化、災害などで経営安定に支障がある中小企業を信用保証で支援する制度。",
+    "point": "市区町村長の認定、保証枠、対象事由を整理する。",
+    "example": "5号認定は業況悪化業種に関する保証。",
+    "hint": "市区町村長の認定、保証枠、対象事由を整理する。",
+    "diagram": "policy",
+    "subject": "中小企業経営・政策",
+    "totalCount": 1,
+    "importance": "C",
+    "topSubjects": [
+      {
+        "name": "中小企業経営・政策",
+        "count": 1
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=338AC0000000154"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  },
+  {
+    "id": "c6487f92721f",
+    "term": "信用保証制度",
+    "front": "信用保証制度",
+    "back": "信用保証協会が中小企業の借入債務を保証し、金融機関からの資金調達を支援する制度。",
+    "point": "保証協会・金融機関・中小企業の三者関係を押さえる。",
+    "example": "保証付き融資では保証料が発生する。",
+    "hint": "保証協会・金融機関・中小企業の三者関係を押さえる。",
+    "diagram": "policy",
+    "subject": "中小企業経営・政策",
+    "totalCount": 1,
+    "importance": "C",
+    "topSubjects": [
+      {
+        "name": "中小企業経営・政策",
+        "count": 1
+      }
+    ],
+    "topYears": [],
+    "sources": [
+      {
+        "title": "elaws.e-gov.go.jp",
+        "url": "https://elaws.e-gov.go.jp/document?lawid=338AC0000000154"
+      }
+    ],
+    "explanationSource": "professional-curated-web-sourced"
+  }
+];</script>
+<script type="module">
+let cards = [];
+let filtered = [];
+let index = 0;
+let flipped = false;
+
+const known = new Set(JSON.parse(localStorage.getItem("knownCards") || "[]"));
+const els = {
+  cardCount: document.querySelector("#cardCount"),
+  knownCount: document.querySelector("#knownCount"),
+  position: document.querySelector("#position"),
+  search: document.querySelector("#search"),
+  subjectFilter: document.querySelector("#subjectFilter"),
+  prev: document.querySelector("#prevButton"),
+  flip: document.querySelector("#flipButton"),
+  next: document.querySelector("#nextButton"),
+  bottomPrev: document.querySelector("#bottomPrev"),
+  bottomFlip: document.querySelector("#bottomFlip"),
+  bottomNext: document.querySelector("#bottomNext"),
+  known: document.querySelector("#knownButton"),
+  shuffle: document.querySelector("#shuffleButton"),
+  card: document.querySelector("#card"),
+  subject: document.querySelector("#subject"),
+  importance: document.querySelector("#importance"),
+  term: document.querySelector("#term"),
+  diagram: document.querySelector("#diagram"),
+  hint: document.querySelector("#hint"),
+  answer: document.querySelector("#answer"),
+  sourceBadge: document.querySelector("#sourceBadge"),
+  count: document.querySelector("#count"),
+  example: document.querySelector("#example"),
+  sources: document.querySelector("#sources"),
+};
+
+async function boot() {
+  if (Array.isArray(window.__CARDS__)) {
+    cards = window.__CARDS__;
+  } else {
+    try {
+      const response = await fetch("data/cards.json", { cache: "no-store" });
+      if (!response.ok) throw new Error("cards.json not found");
+      cards = await response.json();
+    } catch {
+      cards = [];
+    }
+  }
+  filtered = [...cards];
+  setupFilters();
+  bind();
+  render();
+}
+
+function setupFilters() {
+  const subjects = new Set(cards.map(card => card.subject).filter(Boolean));
+  for (const subject of [...subjects].sort((a, b) => a.localeCompare(b, "ja"))) {
+    const option = document.createElement("option");
+    option.value = subject;
+    option.textContent = subject;
+    els.subjectFilter.append(option);
+  }
+}
+
+function bind() {
+  els.search.addEventListener("input", applyFilters);
+  els.subjectFilter.addEventListener("change", applyFilters);
+  els.prev.addEventListener("click", () => move(-1));
+  els.next.addEventListener("click", () => move(1));
+  els.bottomPrev.addEventListener("click", () => move(-1));
+  els.bottomNext.addEventListener("click", () => move(1));
+  els.flip.addEventListener("click", flip);
+  els.bottomFlip.addEventListener("click", flip);
+  els.known.addEventListener("click", toggleKnown);
+  els.shuffle.addEventListener("click", shuffle);
+  els.card.addEventListener("click", event => {
+    if (event.target.closest("a,button")) return;
+    flip();
+  });
+  window.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") move(-1);
+    if (event.key === "ArrowRight") move(1);
+    if (event.key === " ") {
+      event.preventDefault();
+      flip();
+    }
+  });
+  let startX = 0;
+  els.card.addEventListener("touchstart", event => startX = event.changedTouches[0].clientX, { passive: true });
+  els.card.addEventListener("touchend", event => {
+    const dx = event.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) move(dx > 0 ? -1 : 1);
+  }, { passive: true });
+}
+
+function applyFilters() {
+  const query = els.search.value.trim().toLowerCase();
+  const subject = els.subjectFilter.value;
+  filtered = cards.filter(card => {
+    const text = `${card.term} ${card.back} ${card.point} ${card.example}`.toLowerCase();
+    return (!query || text.includes(query)) && (!subject || card.subject === subject);
+  });
+  index = 0;
+  flipped = false;
+  render();
+}
+
+function move(delta) {
+  if (!filtered.length) return;
+  index = (index + delta + filtered.length) % filtered.length;
+  flipped = false;
+  render();
+}
+
+function flip() {
+  flipped = !flipped;
+  render();
+}
+
+function toggleKnown() {
+  const card = filtered[index];
+  if (!card) return;
+  if (known.has(card.id)) known.delete(card.id);
+  else known.add(card.id);
+  localStorage.setItem("knownCards", JSON.stringify([...known]));
+  render();
+}
+
+function shuffle() {
+  for (let i = filtered.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+  }
+  index = 0;
+  flipped = false;
+  render();
+}
+
+function render() {
+  els.cardCount.textContent = `${cards.length} cards`;
+  els.knownCount.textContent = `${known.size} known`;
+  els.position.textContent = filtered.length ? `${index + 1} / ${filtered.length}` : "0 / 0";
+  const card = filtered[index];
+  if (!card) {
+    els.subject.textContent = "NO DATA";
+    els.importance.textContent = "-";
+    els.term.textContent = "カードがありません";
+    els.hint.textContent = "条件を変えるか、データを再生成してください。";
+    els.answer.replaceChildren();
+    els.diagram.replaceChildren();
+    els.count.textContent = "-";
+    els.example.textContent = "-";
+    els.sources.replaceChildren();
+    return;
+  }
+  els.subject.textContent = card.subject || "診断士";
+  els.importance.textContent = card.importance || "B";
+  els.term.textContent = card.term;
+  els.hint.textContent = flipped ? card.point : "タップで解説。まずは自分の言葉で定義してみる。";
+  els.answer.replaceChildren();
+  if (flipped) {
+    els.answer.append(paragraph(card.back), paragraph(`例: ${card.example || "過去問の文脈と合わせて確認。"}`));
+  }
+  els.diagram.innerHTML = diagramSvg(card.diagram);
+  els.count.textContent = `${card.totalCount || 0} 回`;
+  els.example.textContent = card.point || "-";
+  els.sourceBadge.textContent = card.explanationSource ? `解説: ${card.explanationSource}` : "";
+  els.known.textContent = known.has(card.id) ? "未習得に戻す" : "覚えた";
+  els.card.classList.toggle("is-known", known.has(card.id));
+  renderSources(card.sources || []);
+}
+
+function paragraph(text) {
+  const p = document.createElement("p");
+  p.textContent = text;
+  return p;
+}
+
+function renderSources(sources) {
+  els.sources.replaceChildren(...sources.slice(0, 3).map(source => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = source.url;
+    a.target = "_blank";
+    a.rel = "noreferrer";
+    a.textContent = source.title || new URL(source.url).hostname;
+    li.append(a);
+    return li;
+  }));
+}
+
+function diagramSvg(type) {
+  const diagrams = {
+    demand: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M82 42L255 136" class="line accent"/><text x="250" y="124">D</text><text x="16" y="28">P</text><text x="284" y="166">Q</text></svg>`,
+    supply: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M82 136L255 42" class="line accent"/><text x="250" y="50">S</text><text x="16" y="28">P</text><text x="284" y="166">Q</text></svg>`,
+    equilibrium: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M80 42L250 136" class="line"/><path d="M80 136L250 42" class="line accent"/><circle cx="165" cy="89" r="5" class="dot"/><text x="172" y="84">E</text><text x="252" y="130">D</text><text x="252" y="51">S</text></svg>`,
+    elasticity: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M80 55L260 120" class="line"/><path d="M135 42L170 140" class="line accent"/><text x="74" y="48">弾力的</text><text x="176" y="139">非弾力的</text></svg>`,
+    indifference: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M82 132C135 126 169 102 202 48" class="line accent"/><path d="M72 62L255 142" class="line"/><circle cx="154" cy="96" r="5" class="dot"/><text x="210" y="52">U</text><text x="226" y="136">予算線</text></svg>`,
+    budget: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M65 35L260 145" class="line accent"/><text x="95" y="76">予算制約線</text></svg>`,
+    cost: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M75 132C120 54 200 54 258 132" class="line"/><path d="M86 142C134 120 184 44 246 28" class="line accent"/><text x="205" y="43">MC</text><text x="234" y="129">AC</text></svg>`,
+    "is-lm": `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M82 45L252 132" class="line"/><path d="M82 132L252 45" class="line accent"/><text x="245" y="128">IS</text><text x="244" y="54">LM</text><text x="18" y="28">r</text><text x="284" y="166">Y</text></svg>`,
+    lorenz: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M55 145L255 35" class="line"/><path d="M55 145C120 142 184 114 255 35" class="line accent"/><text x="190" y="68">完全平等線</text><text x="145" y="130">ローレンツ曲線</text></svg>`,
+    npv: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><rect x="70" y="114" width="28" height="31" class="bar negative"/><rect x="120" y="85" width="28" height="60" class="bar"/><rect x="170" y="68" width="28" height="77" class="bar"/><rect x="220" y="54" width="28" height="91" class="bar"/><text x="65" y="108">投資</text><text x="118" y="80">CF</text></svg>`,
+    irr: `<svg viewBox="0 0 320 180"><path d="M45 110H290M55 155V20" class="axis"/><path d="M72 42C130 72 194 105 260 140" class="line accent"/><circle cx="190" cy="105" r="5" class="dot"/><text x="199" y="101">NPV=0</text><text x="250" y="154">割引率</text></svg>`,
+    wacc: `<svg viewBox="0 0 320 180"><rect x="60" y="50" width="82" height="80" class="box"/><rect x="178" y="50" width="82" height="80" class="box accent-fill"/><text x="78" y="95">負債</text><text x="194" y="95">株主資本</text><text x="95" y="150">加重平均 = WACC</text></svg>`,
+    capm: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M70 125L260 35" class="line accent"/><text x="175" y="65">SML</text><text x="18" y="28">期待収益率</text><text x="260" y="166">β</text></svg>`,
+    frontier: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M90 135C115 78 170 36 250 34" class="line accent"/><text x="168" y="51">効率的フロンティア</text><text x="18" y="28">収益</text><text x="256" y="166">リスク</text></svg>`,
+    "break-even": `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M72 130L260 45" class="line accent"/><path d="M72 110L260 110" class="line"/><circle cx="116" cy="110" r="5" class="dot"/><text x="124" y="105">BEP</text></svg>`,
+    ratio: `<svg viewBox="0 0 320 180"><rect x="60" y="40" width="200" height="30" class="bar"/><rect x="60" y="88" width="140" height="30" class="bar accent-fill"/><text x="66" y="61">総資本</text><text x="66" y="109">自己資本</text></svg>`,
+    swot: matrixSvg(["Strength", "Weakness", "Opportunity", "Threat"]),
+    "five-forces": `<svg viewBox="0 0 320 180"><rect x="125" y="72" width="70" height="36" class="box accent-fill"/><text x="139" y="95">競争</text><text x="134" y="28">新規参入</text><text x="20" y="95">売り手</text><text x="246" y="95">買い手</text><text x="132" y="160">代替品</text><path d="M160 38V70M72 90H122M198 90H246M160 110V145" class="arrow"/></svg>`,
+    vrio: matrixSvg(["Value", "Rarity", "Imitability", "Organization"]),
+    matrix: matrixSvg(["既存市場", "新市場", "既存製品", "新製品"]),
+    ppm: matrixSvg(["花形", "問題児", "金のなる木", "負け犬"]),
+    flow: `<svg viewBox="0 0 320 180"><rect x="45" y="70" width="55" height="40" class="box"/><rect x="132" y="70" width="55" height="40" class="box"/><rect x="219" y="70" width="55" height="40" class="box"/><path d="M101 90H130M188 90H217" class="arrow"/><text x="56" y="95">前工程</text><text x="143" y="95">後工程</text><text x="232" y="95">顧客</text></svg>`,
+    inventory: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M70 45L120 130L121 55L175 130L176 55L230 130" class="line accent"/><path d="M60 118H260" class="line dashed"/><text x="64" y="113">発注点</text></svg>`,
+    pert: `<svg viewBox="0 0 320 180"><circle cx="55" cy="90" r="18" class="node"/><circle cx="150" cy="50" r="18" class="node"/><circle cx="150" cy="130" r="18" class="node"/><circle cx="255" cy="90" r="18" class="node"/><path d="M73 84L132 57M73 96L132 123M168 57L237 84M168 123L237 96" class="arrow"/><text x="50" y="95">1</text><text x="145" y="55">2</text><text x="145" y="135">3</text><text x="250" y="95">4</text></svg>`,
+    normal: `<svg viewBox="0 0 320 180"><path d="M45 145H290M55 155V20" class="axis"/><path d="M70 140C115 140 120 55 160 55C200 55 205 140 250 140" class="line accent"/><path d="M95 35V145M225 35V145" class="line dashed"/><text x="86" y="30">LSL</text><text x="216" y="30">USL</text></svg>`,
+    system: `<svg viewBox="0 0 320 180">${["販売","購買","生産","会計"].map((t,i)=>`<rect x="${55+i*58}" y="62" width="48" height="48" class="box"/><text x="${64+i*58}" y="91">${t}</text>`).join("")}<path d="M78 118H252" class="line accent"/><text x="112" y="145">統合DB</text></svg>`,
+    sql: `<svg viewBox="0 0 320 180"><rect x="55" y="35" width="210" height="110" class="box"/><path d="M55 65H265M55 95H265M55 125H265M125 35V145M195 35V145" class="line"/><text x="77" y="56">id</text><text x="142" y="56">商品</text><text x="212" y="56">売上</text></svg>`,
+    normalization: `<svg viewBox="0 0 320 180"><rect x="40" y="55" width="90" height="70" class="box"/><rect x="190" y="35" width="90" height="45" class="box"/><rect x="190" y="105" width="90" height="45" class="box"/><path d="M132 86H188M132 86L188 127" class="arrow"/><text x="56" y="92">受注明細</text><text x="206" y="62">商品</text><text x="206" y="132">顧客</text></svg>`,
+    security: `<svg viewBox="0 0 320 180"><rect x="80" y="60" width="160" height="85" rx="8" class="box"/><path d="M105 60V42C105 16 215 16 215 42V60" class="line accent"/><text x="124" y="110">暗号・署名</text></svg>`,
+    ip: matrixSvg(["特許", "実用新案", "意匠", "商標"]),
+    law: `<svg viewBox="0 0 320 180"><rect x="70" y="35" width="180" height="110" class="box"/><path d="M95 65H225M95 92H225M95 119H190" class="line"/><text x="112" y="154">条文・要件・効果</text></svg>`,
+    policy: `<svg viewBox="0 0 320 180"><circle cx="90" cy="90" r="34" class="node"/><circle cx="170" cy="90" r="34" class="node accent-fill"/><circle cx="250" cy="90" r="34" class="node"/><path d="M124 90H136M204 90H216" class="arrow"/><text x="73" y="95">企業</text><text x="153" y="95">制度</text><text x="233" y="95">支援</text></svg>`,
+    formula: `<svg viewBox="0 0 320 180"><rect x="50" y="55" width="220" height="70" class="box"/><text x="76" y="98">式・関係を暗記</text></svg>`,
+    table: `<svg viewBox="0 0 320 180"><rect x="60" y="40" width="200" height="100" class="box"/><path d="M60 73H260M60 106H260M126 40V140M193 40V140" class="line"/></svg>`,
+    none: ""
+  };
+  return diagrams[type] || "";
+}
+
+function matrixSvg(labels) {
+  return `<svg viewBox="0 0 320 180"><rect x="50" y="32" width="220" height="116" class="box"/><path d="M160 32V148M50 90H270" class="line"/><text x="78" y="68">${labels[0]}</text><text x="184" y="68">${labels[1]}</text><text x="78" y="126">${labels[2]}</text><text x="184" y="126">${labels[3]}</text></svg>`;
+}
+
+boot();
+
+</script>
+</body>
+</html>
